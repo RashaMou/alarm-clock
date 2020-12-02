@@ -1,10 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Alarms = () => {
+const Alarms = (props) => {
     return (
         <div>
             <h2>Alarms</h2>
-            <h2>Add Alarm</h2>
+            <Link to="/addAlarm">
+                <button>+</button>
+            </Link>
         </div>
     );
 };
