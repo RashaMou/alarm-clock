@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 const Alarms = (props) => {
     return (
         <div>
-            <h2>Alarms</h2>
+            <h2 className="alarms-title">Alarms</h2>
             <Link to="/addAlarm">
-                <button>+</button>
+                <button className="new-alarm">+</button>
             </Link>
         </div>
     );

@@ -1,14 +1,14 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import "./App.css";
 import AddAlarm from "./components/AddAlarm";
 import Alarms from "./components/Alarms";
+import "./styles/index.scss";
 
 function App(props) {
     // fetches and displays array of alarms from database
 
     return (
-        <div>
+        <div className="app">
             <Route exact path="/">
                 <Alarms />
             </Route>

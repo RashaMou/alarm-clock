@@ -25,6 +25,7 @@ const AddAlarm = (props) => {
     const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
     const selectRepeat = (day) => {
+        console.log(day);
         setAlarm({
             ...alarm,
             repeatedDays: {
@@ -70,60 +71,89 @@ const AddAlarm = (props) => {
 
     return (
         <div>
-            <Link to="/">Back</Link>
+            <Link to="/">
+                <button className="back-button">&#8249;</button>
+            </Link>
             {error ? <p>{error}</p> : null}
-            <form>
-                <label>
-                    Name:
-                    <input type="text" onChange={handleChange} />
+            <form className="form">
+                <label for="alarm-label" className="alarm-label-title">
+                    Alarm Label
                 </label>
-                <select name="hour" id="hour" onChange={handleTime}>
-                    <option value={0}>00</option>
-                    {hours.map((h, idx) => {
-                        if (h < 10) {
-                            return (
-                                <option key={idx} value={h}>
-                                    0{h}
-                                </option>
-                            );
-                        }
-                        return <option value={h}>{h}</option>;
-                    })}
-                </select>
-                <select name="minutes" id="minutes" onChange={handleTime}>
-                    {minutes.map((m, idx) => {
-                        if (m < 10) {
-                            return (
-                                <option key={idx} value={m}>
-                                    0{m}
-                                </option>
-                            );
-                        }
-                        return <option value={m}>{m}</option>;
-                    })}
-                </select>
-                <select name="am-pm" id="amPm" onChange={handleTime}>
-                    <option value="am">am</option>
-                    <option value="pm">pm</option>
-                </select>
-            </form>
-            <h2>Repeat</h2>
-            {days.map((day, idx) => {
-                return (
-                    <span
-                        key={idx}
-                        onClick={() => selectRepeat(day)}
-                        className={`${
-                            alarm.repeatedDays[day] ? "repeatedDay" : ""
-                        }`}
+                <input
+                    type="text"
+                    id="alarm-label"
+                    onChange={handleChange}
+                    className="input-box"
+                />
+                <div className="selects">
+                    <select
+                        name="hour"
+                        id="hour"
+                        onChange={handleTime}
+                        className="select"
                     >
-                        {day}
-                    </span>
-                );
-            })}
-            {/* <Link to="/"> */}
-            <button onClick={submitAlarm}>Add</button>
-            {/* </Link> */}
+                        <option value={0}>00</option>
+                        {hours.map((h, idx) => {
+                            if (h < 10) {
+                                return (
+                                    <option key={idx} value={h}>
+                                        0{h}
+                                    </option>
+                                );
+                            }
+                            return <option value={h}>{h}</option>;
+                        })}
+                    </select>
+                    <span className="colon">:</span>
+                    <select
+                        name="minutes"
+                        id="minutes"
+                        onChange={handleTime}
+                        className="select select-minutes"
+                    >
+                        {minutes.map((m, idx) => {
+                            if (m < 10) {
+                                return (
+                                    <option key={idx} value={m}>
+                                        0{m}
+                                    </option>
+                                );
+                            }
+                            return <option value={m}>{m}</option>;
+                        })}
+                    </select>
+                    <select
+                        name="am-pm"
+                        id="amPm"
+                        onChange={handleTime}
+                        className="select"
+                    >
+                        <option value="am">am</option>
+                        <option value="pm">pm</option>
+                    </select>
+                </div>
+            </form>
+            <h2 className="repeat-title">Repeat</h2>
+            <div className="days">
+                {days.map((day, idx) => {
+                    return (
+                        <span
+                            key={idx}
+                            onClick={() => selectRepeat(day)}
+                            className={`day ${
+                                alarm.repeatedDays[day] ? "repeatedDay" : ""
+                            }`}
+                        >
+                            {day}
+                        </span>
+                    );
+                })}
+            </div>
+            <Link to="/">
+                <button onClick={submitAlarm} className="save-button">
+                    Save
+                </button>
+            </Link>
         </div>
     );
 };

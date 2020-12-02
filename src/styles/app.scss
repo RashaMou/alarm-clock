@@ -1,0 +1,113 @@
+.app {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px 0 50px 20px;
+}
+
+h2 {
+    color: $dark-grey;
+}
+
+.alarms-title {
+    font-size: 30px;
+}
+
+.back-button,
+.new-alarm {
+    color: white;
+    background-color: $pink;
+    border-radius: 50%;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.new-alarm {
+    font-size: 40px;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 150px;
+    bottom: 20px;
+    padding-bottom: 9px;
+}
+
+.back-button {
+    font-size: 30px;
+    padding-bottom: 43px;
+    width: 40px;
+    height: 40px;
+}
+
+.alarm-label-title {
+    color: $light-grey;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 80%;
+    margin-top: 20px;
+
+    .input-box {
+        // background-color: transparent;
+        border: 0px solid;
+        height: 40px;
+        width: 320px;
+        color: #ccc;
+        border-bottom: 1px solid;
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .selects {
+        margin-top: 30px;
+
+        .colon {
+            color: $pink;
+        }
+
+        .select {
+            margin-right: 10px;
+            font-size: 15px;
+        }
+
+        .select-minutes {
+            margin-left: 10px;
+        }
+    }
+}
+.repeat-title {
+    margin-top: 30px;
+    color: $light-grey;
+    font-size: 20px;
+}
+
+.days {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    .day {
+        margin-right: 20px;
+        width: 30px;
+        color: $medium-grey;
+    }
+
+    .repeatedDay {
+        color: $pink;
+        font-weight: bolder;
+    }
+}
+
+.save-button {
+    margin-top: 60px;
+    background-color: $pink;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+    justify-self: self-end;
+}
