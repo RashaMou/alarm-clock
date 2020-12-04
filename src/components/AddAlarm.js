@@ -24,7 +24,6 @@ const AddAlarm = (props) => {
     const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
     const selectRepeat = (day) => {
-        console.log(day);
         setAlarm({
             ...alarm,
             [day]: !alarm[day],
@@ -63,7 +62,7 @@ const AddAlarm = (props) => {
             axios
                 .post("http://shaxpi:3000/alarms", alarm)
                 .then((res) => {
-                    console.log(res);
+                    props.setAlarms([...props.alarms, res.data]);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -78,7 +77,7 @@ const AddAlarm = (props) => {
             </Link>
             {error ? <p>{error}</p> : null}
             <form className="form">
-                <label for="alarm-label" className="alarm-label-title">
+                <label htmlFor="alarm-label" className="alarm-label-title">
                     Alarm Label
                 </label>
                 <input
@@ -103,7 +102,11 @@ const AddAlarm = (props) => {
                                     </option>
                                 );
                             }
-                            return <option value={h}>{h}</option>;
+                            return (
+                                <option key={idx} value={h}>
+                                    {h}
+                                </option>
+                            );
                         })}
                     </select>
                     <span className="colon">:</span>
@@ -121,7 +124,11 @@ const AddAlarm = (props) => {
                                     </option>
                                 );
                             }
-                            return <option value={m}>{m}</option>;
+                            return (
+                                <option key={idx} value={m}>
+                                    {m}
+                                </option>
+                            );
                         })}
                     </select>
                     <select
