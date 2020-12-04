@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -8,15 +9,13 @@ const AddAlarm = (props) => {
         hour: 0,
         minutes: 0,
         amPm: "am",
-        repeatedDays: {
-            Mon: false,
-            Tue: false,
-            Wed: false,
-            Thu: false,
-            Fri: false,
-            Sat: false,
-            Sun: false,
-        },
+        Mon: false,
+        Tue: false,
+        Wed: false,
+        Thu: false,
+        Fri: false,
+        Sat: false,
+        Sun: false,
     });
 
     const handleChange = (e) => {
@@ -28,10 +27,7 @@ const AddAlarm = (props) => {
         console.log(day);
         setAlarm({
             ...alarm,
-            repeatedDays: {
-                ...alarm.repeatedDays,
-                [day]: !alarm.repeatedDays[day],
-            },
+            [day]: !alarm[day],
         });
     };
 
@@ -64,8 +60,14 @@ const AddAlarm = (props) => {
         if (alarm.hour === 0) {
             setError("Please set the hour");
         } else {
-            console.log(alarm);
-            // submit to database
+            axios
+                .post("http://shaxpi:3000/alarms", alarm)
+                .then((res) => {
+                    console.log(res);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         }
     };
 
@@ -140,9 +142,7 @@ const AddAlarm = (props) => {
                         <span
                             key={idx}
                             onClick={() => selectRepeat(day)}
-                            className={`day ${
-                                alarm.repeatedDays[day] ? "repeatedDay" : ""
-                            }`}
+                            className={`day ${alarm[day] ? "repeatedDay" : ""}`}
                         >
                             {day}
                         </span>
