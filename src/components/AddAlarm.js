@@ -60,7 +60,7 @@ const AddAlarm = (props) => {
             setError("Please set the hour");
         } else {
             axios
-                .post("http://shaxpi:3000/alarms", alarm)
+                .post("http://shaxpi:5000/alarms", alarm)
                 .then((res) => {
                     props.setAlarms([...props.alarms, res.data]);
                 })

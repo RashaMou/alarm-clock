@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Route } from "react-router-dom";
 import AddAlarm from "./components/AddAlarm";
 import Alarms from "./components/Alarms";
+import ToggleSwitch from "./components/ToggleSwitch";
 import "./styles/index.scss";
 
 function App(props) {
@@ -10,7 +11,7 @@ function App(props) {
 
     useEffect(() => {
         axios
-            .get("http://shaxpi:3000/alarms")
+            .get("http://shaxpi:5000/alarms")
             .then((res) => {
                 setAlarms(res.data);
             })
@@ -26,6 +27,7 @@ function App(props) {
             <Route exact path="/addAlarm">
                 <AddAlarm setAlarms={setAlarms} alarms={alarms} />
             </Route>
+            <ToggleSwitch />
         </div>
     );
 }
