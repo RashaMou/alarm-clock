@@ -2,20 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Alarms = (props) => {
-    // const handleToggle = (alarm) => {
-    //     axios
-    //         .put(`http://shaxpi:5000/alarms/${alarm.id}`, {
-    //             active: !alarm.active,
-    //         })
-    //         .then((res) => {
-    //             console.log(res.data);
-    //             props.setAlarms(res.data);
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         });
-    // };
-
     return (
         <div>
             <h2 className="alarms-title">Alarms</h2>
@@ -24,9 +10,20 @@ const Alarms = (props) => {
                     <div key={alarm.id} className="alarm-toggle">
                         <div className="time-label">
                             <div className="time">
-                                <span>{alarm.hour}</span>
+                                <span>
+                                    {alarm.hour < 10 ? (
+                                        <span>0{alarm.hour}</span>
+                                    ) : (
+                                        <span>{alarm.hour}</span>
+                                    )}
+                                </span>
                                 <span>:</span>
-                                <span>{alarm.minutes}</span>
+                                {alarm.minutes < 10 ? (
+                                    <span>0{alarm.minutes}</span>
+                                ) : (
+                                    <span>{alarm.minutes}</span>
+                                )}
+
                                 <span>{alarm.amPm}</span>
                             </div>
                             <p>{alarm.name}</p>
