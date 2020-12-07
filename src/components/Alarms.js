@@ -33,7 +33,7 @@ const Alarms = (props) => {
                         </div>
                         <input
                             type="checkbox"
-                            checked={props.active}
+                            checked={alarm.active}
                             onChange={() => props.handleToggle(alarm)}
                         />
                         <label htmlFor={`react-switch-new`}></label>

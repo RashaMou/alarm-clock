@@ -7,7 +7,7 @@ import "./styles/index.scss";
 
 function App(props) {
     const [alarms, setAlarms] = useState([]);
-    const [active, setActive] = useState(true);
+    const [activeStateChange, setActiveStateChange] = useState(true);
     const handleToggle = (alarm) => {
         axios
             .put(`http://shaxpi:5000/alarms/${alarm.id}`, {
@@ -15,7 +15,7 @@ function App(props) {
             })
             .then((res) => {
                 console.log(res.data);
-                setActive(!res.data.updatedAlarm.active);
+                setActiveStateChange(!activeStateChange);
             })
             .catch((err) => {
                 console.log(err);
@@ -32,15 +32,12 @@ function App(props) {
             .catch((err) => {
                 console.log(err);
             });
-    }, [active]);
+    }, [activeStateChange]);
+
     return (
         <div className="app">
             <Route exact path="/">
-                <Alarms
-                    alarms={alarms}
-                    active={active}
-                    handleToggle={handleToggle}
-                />
+                <Alarms alarms={alarms} handleToggle={handleToggle} />
             </Route>
             <Route exact path="/addAlarm">
                 <AddAlarm setAlarms={setAlarms} alarms={alarms} />
