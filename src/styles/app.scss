@@ -1,7 +1,7 @@
 .app {
-    width: 400px;
+    max-width: 400px;
     margin: 0 auto;
-    padding: 20px 0 50px 20px;
+    padding: 20px 20px 50px 20px;
 }
 
 h2 {
@@ -10,6 +10,7 @@ h2 {
 
 .alarms-title {
     font-size: 30px;
+    margin-bottom: 25px;
 }
 
 .back-button,
@@ -111,4 +112,10 @@ h2 {
     color: white;
     font-size: 13px;
     justify-self: self-end;
+}
+
+.alarm-toggle {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
