@@ -4,18 +4,28 @@ import DeleteModal from "./DeleteModal";
 
 const Alarms = (props) => {
   const [modal, setModal] = useState(false);
-  const handleClick = () => {
+  const [clickedAlarm, setClickedAlarm] = useState(null);
+
+  const handleClick = (alarm) => {
+    setClickedAlarm(alarm);
     setModal(!modal);
   };
 
   return (
     <div>
       <h2 className="alarms-title">Alarms</h2>
-      {modal && <DeleteModal modal={modal} setModal={setModal} />}
+      {modal && (
+        <DeleteModal
+          modal={modal}
+          setModal={setModal}
+          handleDelete={props.handleDelete}
+          alarm={clickedAlarm}
+        />
+      )}
       {props.alarms?.map((alarm) => {
         return (
           <div key={alarm.id} className="alarm-toggle">
-            <div className="time-label" onClick={() => handleClick()}>
+            <div className="time-label" onClick={() => handleClick(alarm.id)}>
               <div className="time">
                 <span>
                   {alarm.hour < 10 ? (

@@ -4,6 +4,10 @@ import { Button } from "reactstrap";
 
 const DeleteModal = (props) => {
   const toggle = () => props.setModal(!props.modal);
+  const removeAlarm = () => {
+    props.handleDelete(props.alarm);
+    props.setModal(!props.modal);
+  };
 
   const customStyles = {
     content: {
@@ -22,7 +26,7 @@ const DeleteModal = (props) => {
           Are you sure you want to delete this alarm?
         </div>
         <div className="modal-buttons">
-          <Button color="primary" onClick={toggle}>
+          <Button color="primary" onClick={removeAlarm}>
             Delete
           </Button>{" "}
           <Button color="secondary" onClick={toggle}>
