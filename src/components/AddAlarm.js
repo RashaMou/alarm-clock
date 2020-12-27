@@ -143,19 +143,19 @@ const AddAlarm = (props) => {
                 </div>
             </form>
             <h2 className="repeat-title">Repeat</h2>
-            <div className="days">
+            <ul className="days">
                 {days.map((day, idx) => {
                     return (
-                        <span
+                        <li
                             key={idx}
                             onClick={() => selectRepeat(day)}
                             className={`day ${alarm[day] ? "repeatedDay" : ""}`}
                         >
                             {day}
-                        </span>
+                        </li>
                     );
                 })}
-            </div>
+            </ul>
             <Link to="/">
                 <button onClick={submitAlarm} className="save-button">
                     Save
