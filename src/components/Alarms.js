@@ -1,3 +1,6 @@
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Checkbox } from 'primereact/checkbox';
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import DeleteModal from "./DeleteModal";
@@ -45,17 +48,13 @@ const Alarms = (props) => {
               </div>
               <p className="alarm-name">{alarm.name}</p>
             </div>
-            <input
-              type="checkbox"
-              checked={alarm.active}
-              onChange={() => props.handleToggle(alarm)}
-            />
+            <Checkbox onChange={() => props.handleToggle(alarm)} checked={alarm.active}></Checkbox>
           </div>
         );
       })}
 
       <Link to="/addAlarm">
-        <button className="new-alarm">+</button>
+      <FontAwesomeIcon icon={faPlusCircle} className="new-alarm"/>
       </Link>
     </div>
   );

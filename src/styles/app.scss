@@ -15,18 +15,14 @@ h2 {
 
 .back-button,
 .new-alarm {
-  color: white;
-  background-color: $pink;
-  border-radius: 50%;
+  color: $pink;
   &:hover {
     cursor: pointer;
   }
 }
 
 .new-alarm {
-  font-size: 40px;
-  width: 60px;
-  height: 60px;
+  font-size: 80px;
   position: absolute;
   left: 150px;
   bottom: 20px;
@@ -34,10 +30,7 @@ h2 {
 }
 
 .back-button {
-  font-size: 30px;
-  padding-bottom: 20px;
-  width: 40px;
-  height: 40px;
+  font-size: 40px;
 }
 
 .alarm-label-title {
@@ -70,18 +63,19 @@ h2 {
     .colon {
       color: $pink;
     }
+  }
 
-    .select {
-      margin-right: 10px;
-      font-size: 20px;
-      color: $medium-grey;
-    }
+  .select {
+    margin-right: 10px;
+    font-size: 20px;
+    color: $medium-grey;
+  }
 
-    .select-minutes {
-      margin-left: 10px;
-    }
+  .select-minutes {
+    margin-left: 10px;
   }
 }
+
 .repeat-title {
   margin-top: 30px;
   color: $light-grey;

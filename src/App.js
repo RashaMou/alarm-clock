@@ -27,7 +27,6 @@ function App(props) {
     axios
       .delete(`http://shaxpi:5000/alarms/${alarm}`)
       .then((res) => {
-        console.log(res.data);
         setStateChange(!stateChange);
       })
       .catch((err) => {
@@ -39,7 +38,6 @@ function App(props) {
     axios
       .get("http://shaxpi:5000/alarms")
       .then((res) => {
-        console.log(res.data);
         setAlarms(res.data);
       })
       .catch((err) => {
